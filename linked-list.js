@@ -77,6 +77,15 @@ const LinkedLists = () => {
 
         return containes(valueToBeChecked, head.next);
     };
+    // returns the index of the node containing value, or null if not found.
+    const find = (valueToBeChecked, head = headNode, index = 0) => {
+        if (head.value === valueToBeChecked) {
+            return index;
+        } else if (head.next) {
+            return find(valueToBeChecked, head.next, ++index);
+        }
+        return null;
+    };
 
     return {
         append,
