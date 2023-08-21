@@ -41,23 +41,47 @@ const LinkedLists = () => {
     };
     // inserts a new node with the provided value at the given index.
     const insertAt = (newItem, index, head = headNode) => {
-        if (index === 1) {
-            count++;
+        if (head === null) {
+            return false;
+        } else if (index === 1) {
+            return prepend(newItem);
+        } else if (index === 2) {
             return (head.next = Node(newItem, head.next));
         }
-        insertAt(newItem, --index, head.next);
+        return insertAt(newItem, --index, head.next);
     };
     // returns the node at the given index
     const at = (index, head = headNode) => {
         if (index === 1) {
             return head.value;
         }
-        at(--index, head.next);
+        return at(--index, head.next);
+    };
+    // removes the last element from the list
+    const pop = (head = headNode) => {
+        if (head === null) {
+            return null;
+        } else if (!head.next.next) {
+            count--;
+            head.next = null;
+        }
+        return pop(head.next);
     };
 
-    const gethead = () => headNode;
-
-    return { append, prepend, gethead, size, head, tail, insertAt, at };
+    return {
+        append,
+        prepend,
+        size,
+        head,
+        tail,
+        insertAt,
+        at,
+        pop,
+        containes,
+        find,
+        toString,
+        removeAt,
+    };
 };
 
 const list = LinkedLists();
@@ -66,9 +90,11 @@ list.append(3);
 list.append(4);
 list.append(5);
 list.prepend(0);
-list.insertAt(2, 2);
+list.insertAt(2, 3);
+
 console.log(JSON.stringify(list.gethead(), null, 4));
-console.log(list.at(1));
-// console.log(list.size());
-// console.log(list.head());
-// console.log(list.tail());
+console.log(list.containes(6));
+console.log(list.toString());
+console.log(list.size());
+console.log(list.head());
+console.log(list.tail());
