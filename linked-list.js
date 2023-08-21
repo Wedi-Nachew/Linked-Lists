@@ -124,14 +124,14 @@ const LinkedLists = () => {
 };
 
 const list = LinkedLists();
+
 list.append(1);
 list.append(3);
 list.append(4);
 list.append(5);
 list.prepend(0);
 list.insertAt(2, 3);
-
-console.log(JSON.stringify(list.gethead(), null, 4));
+// testing
 console.log(list.containes(6));
 console.log(list.toString());
 console.log(list.size());
