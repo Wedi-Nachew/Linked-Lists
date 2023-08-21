@@ -36,10 +36,16 @@ const LinkedLists = () => {
     //returns the total number of nodes in the list
     const size = () => count;
     const head = () => headNode.value;
+    const tail = (head = headNode) => {
+        if (!head.next) {
+            return head.value;
+        }
+        return tail(head.next);
+    };
 
     const gethead = () => headNode;
 
-    return { append, prepend, gethead, size, head };
+    return { append, prepend, gethead, size, head, tail };
 };
 
 const list = LinkedLists();
@@ -50,3 +56,4 @@ list.prepend(0);
 console.log(list.gethead());
 console.log(list.size());
 console.log(list.head());
+console.log(list.tail());
