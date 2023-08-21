@@ -67,6 +67,16 @@ const LinkedLists = () => {
         }
         return pop(head.next);
     };
+    // returns true if the passed in value is in the list and otherwise returns false.
+    const containes = (valueToBeChecked, head = headNode) => {
+        if (head.value === valueToBeChecked) {
+            return true;
+        } else if (!head.next) {
+            return false;
+        }
+
+        return containes(valueToBeChecked, head.next);
+    };
 
     return {
         append,
