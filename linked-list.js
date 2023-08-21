@@ -33,10 +33,11 @@ const LinkedLists = () => {
         count++;
         head = Node(newItem, head);
     };
+    //returns the total number of nodes in the list
+    const size = () => count;
     const gethead = () => head;
-    const getSize = () => count;
 
-    return { append, prepend, gethead, getSize };
+    return { append, prepend, gethead, size };
 };
 
 const list = LinkedLists();
