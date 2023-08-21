@@ -44,11 +44,17 @@ const LinkedLists = () => {
         }
         insertAt(newItem, --index, head.next);
     };
-    // const
+
+    const at = (index, head = headNode) => {
+        if (index === 1) {
+            return head.value;
+        }
+        at(--index, head.next);
+    };
 
     const gethead = () => headNode;
 
-    return { append, prepend, gethead, size, head, tail, insertAt };
+    return { append, prepend, gethead, size, head, tail, insertAt, at };
 };
 
 const list = LinkedLists();
@@ -59,6 +65,7 @@ list.append(5);
 list.prepend(0);
 list.insertAt(2, 2);
 console.log(JSON.stringify(list.gethead(), null, 4));
-console.log(list.size());
-console.log(list.head());
-console.log(list.tail());
+console.log(list.at(1));
+// console.log(list.size());
+// console.log(list.head());
+// console.log(list.tail());
