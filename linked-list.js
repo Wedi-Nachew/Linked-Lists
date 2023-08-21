@@ -4,40 +4,42 @@ const Node = (value = null, next = null) => {
 };
 
 const LinkedLists = () => {
-    let head = null; //{value: 1, next: {value:2, next: {value:3, next: null}}}
+    let headNode = null; //{value: 1, next: {value:2, next: {value:3, next: null}}}
     let count = 0;
 
     //  adds a new node containing newItem to the end of the list
-    const append = (newItem, headNode = null) => {
-        if (headNode === null) {
-            if (head === null) {
+    const append = (newItem, head = null) => {
+        if (head === null) {
+            if (headNode === null) {
                 count++;
-                return (head = Node(newItem));
+                return (headNode = Node(newItem));
             } else {
-                return append(newItem, head);
+                return append(newItem, headNode);
             }
         }
         count++;
-        headNode.next = Node(newItem);
+        head.next = Node(newItem);
     };
     //adds a new node containing newItem to the start of the list
-    const prepend = (newItem, headNode = null) => {
-        if (headNode === null) {
-            if (head === null) {
+    const prepend = (newItem, head = null) => {
+        if (head === null) {
+            if (headNode === null) {
                 count++;
-                return (head = Node(newItem));
+                return (headNode = Node(newItem));
             } else {
-                return prepend(newItem, head);
+                return prepend(newItem, headNode);
             }
         }
         count++;
-        head = Node(newItem, head);
+        headNode = Node(newItem, head);
     };
     //returns the total number of nodes in the list
     const size = () => count;
-    const gethead = () => head;
+    const head = () => headNode.value;
 
-    return { append, prepend, gethead, size };
+    const gethead = () => headNode;
+
+    return { append, prepend, gethead, size, head };
 };
 
 const list = LinkedLists();
@@ -46,4 +48,5 @@ list.append(2);
 list.append(3);
 list.prepend(0);
 console.log(list.gethead());
-console.log(list.getSize());
+console.log(list.size());
+console.log(list.head());
