@@ -86,6 +86,15 @@ const LinkedLists = () => {
         }
         return null;
     };
+    //print the value of the nodes in ( value ) -> ( value ) -> ( value ) -> null format
+    const toString = (head = headNode, str = "") => {
+        if (!head.next) {
+            return str + null;
+        }
+
+        return (str = `(${head.value})` + " => " + toString(head.next, str));
+    };
+    // removes the node at the given index.
 
     return {
         append,
