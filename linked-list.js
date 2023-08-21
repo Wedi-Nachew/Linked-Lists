@@ -38,10 +38,11 @@ const LinkedLists = () => {
         return tail(head.next);
     };
     const insertAt = (newItem, index, head = headNode) => {
-        if (index === 0) {
+        if (index === 1) {
+            count++;
             return (head.next = Node(newItem, head.next));
         }
-        insertAt(newItem, --index, head);
+        insertAt(newItem, --index, head.next);
     };
     // const
 
@@ -52,12 +53,12 @@ const LinkedLists = () => {
 
 const list = LinkedLists();
 list.append(1);
-list.append(2);
 list.append(3);
 list.append(4);
+list.append(5);
 list.prepend(0);
-// list.insertAt(-1, 2);
+list.insertAt(2, 2);
 console.log(JSON.stringify(list.gethead(), null, 4));
 console.log(list.size());
-// console.log(list.head());
-// console.log(list.tail());
+console.log(list.head());
+console.log(list.tail());
