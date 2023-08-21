@@ -95,6 +95,17 @@ const LinkedLists = () => {
         return (str = `(${head.value})` + " => " + toString(head.next, str));
     };
     // removes the node at the given index.
+    const removeAt = (index, head = headNode) => {
+        if (head === null) {
+            return false;
+        } else if (index === 1) {
+            headNode = Node(headNode.next.value, headNode.next.next);
+            return;
+        } else if (index === 2) {
+            return (head.next = head.next.next);
+        }
+        return removeAt(--index, head.next);
+    };
 
     return {
         append,
