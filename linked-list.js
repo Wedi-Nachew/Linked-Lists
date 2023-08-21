@@ -30,13 +30,16 @@ const LinkedLists = () => {
     };
     //returns the total number of nodes in the list
     const size = () => count;
+    //returns the first node in the list
     const head = () => headNode.value;
+    //returns the last node in the list
     const tail = (head = headNode) => {
         if (!head.next) {
             return head.value;
         }
         return tail(head.next);
     };
+    // inserts a new node with the provided value at the given index.
     const insertAt = (newItem, index, head = headNode) => {
         if (index === 1) {
             count++;
@@ -44,7 +47,7 @@ const LinkedLists = () => {
         }
         insertAt(newItem, --index, head.next);
     };
-
+    // returns the node at the given index
     const at = (index, head = headNode) => {
         if (index === 1) {
             return head.value;
